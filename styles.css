@@ -1,0 +1,73 @@
+body {
+    max-width: 500px;
+    margin: auto;
+    background-color: black;
+    color: white;
+    padding: 10vh;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+
+}
+
+canvas {
+    border: 1px solid white;
+}
+
+#myCanvas {
+    margin-top: 2vh;
+}
+
+#voima {
+    max-width: 500px;
+    width: 80%;
+    margin: auto;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    box-shadow: 0px 0px 5px lightblue;
+    margin-top: 1vh;
+}
+
+#pisteet {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 300px; /* Rajoittaa pistealueen leveytt‰ */
+    margin-top: -5vh; /* S‰‰d‰ t‰t‰ tarpeen mukaan */
+    max-width: 500px;
+}
+
+#pisteet h2 {
+    margin: 0;
+    display: grid;
+    text-align: left;
+}
+
+#pisteet h1 {
+    margin: 0;
+    font-size: 1.5em; /* S‰‰d‰ fonttikokoa tarvittaessa */
+}
+
+#pisteet img {
+    width: 40px;
+    position: fixed; /* Jotta kuva keskittyy koko n‰ytˆn mukaan */
+    top: 6vh; /* Kuvan pystysuuntainen sijainti, voit s‰‰t‰‰ */
+    left: 50%; /* Keskitys vaakasuunnassa */
+    transform: translateX(-50%); /* Tarkka vaakakeskitys */
+    border: 3px dotted red;
+
+}
+
+
+#highScore {
+    float: right;
+    text-align: right;
+}
+
+
+
+#score {
+    text-align: left;
+}
