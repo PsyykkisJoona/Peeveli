@@ -7,6 +7,7 @@ const radius = 10;
 const centerX = canvas.width / 2;
 const centerY = canvas.height / 2;
 const minDistanceFromCenter = 25;
+document.addEventListener('keydown', playerControls);
 
 var liiku = new Audio('aanet/liiku.mp3');
 var liiku_2 = new Audio('aanet/liiku_2.mp3');
@@ -20,7 +21,7 @@ var loserSound = new Audio('aanet/loppu.mp3');
 let isShooting = false;
 let canShoot = true;
 let isExploding = false;
-let isOriginalImage = true; // Lippu, joka seuraa, kumpi kuva on n�yt�ss�
+let isOriginalImage = true; 
 let enemies = [];
 let level = 1;
 let stage = 1;
@@ -32,8 +33,17 @@ let ammoCount = 10;
 let enterPressCount = 0;
 let x = 250, y = 250;
 let gameOver = false;
-let canReset = false; // Aluksi pelaaja ei voi resetoida peli�
+let canReset = false; 
 let gameWon = false;
+let spawnEnemyToggle = true; 
+
+const backgroundMusic = document.getElementById("backgroundMusic");
+let currentMusicSrc = ''; // Muuttuja, joka tallentaa nykyisen musiikin l�hteen
+backgroundMusic.loop = true; // Musiikki toistuu automaattisesti
+
+const Varvara = document.getElementById("Varvara");
+Varvara.loop = true; // Musiikki toistuu automaattisesti
+Varvara.src = 'aanet/Varvara.mp3';
 
 function drawBall() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -147,7 +157,6 @@ function endGame() {
 
 }
 
-
 function resetGame() {
     if (gameOver && canReset) {
         // Alustetaan pelin muuttujat
@@ -175,8 +184,6 @@ document.addEventListener("keydown", function (event) {
         resetGame();
     }
 });
-
-
 
 function drawEnemies() {
     enemies.forEach(enemy => {
@@ -309,8 +316,6 @@ function createExplosion(explosionX, explosionY) {
     animateExplosion();
 }
 
-
-
 function updateAmmo() {
     const ammoImage = `kuvat/voima/voima0${10 - Math.min(ammoCount, 10)}.png`;
     voima.src = ammoImage;
@@ -364,26 +369,11 @@ function playerControls(event) {
     if (!isShooting && !isExploding) drawBall();
 }
 
-// Liitet��n pelaajan ohjain
-document.addEventListener('keydown', playerControls);
-
-
 let enemyMoveInterval = 2000; // Alkuper�inen liikkumisv�li vihollisille
 let enemyMoveTimer = setInterval(() => {
     moveEnemies();
 
 }, enemyMoveInterval);
-
-
-const backgroundMusic = document.getElementById("backgroundMusic");
-backgroundMusic.loop = true; // Musiikki toistuu automaattisesti
-
-const Varvara = document.getElementById("Varvara");
-Varvara.loop = true; // Musiikki toistuu automaattisesti
-Varvara.src = 'aanet/Varvara.mp3';
-
-
-let currentMusicSrc = ''; // Muuttuja, joka tallentaa nykyisen musiikin l�hteen
 
 function updateLevelMusic(level) {
     let newMusicSrc;
@@ -406,11 +396,6 @@ function updateLevelMusic(level) {
         backgroundMusic.play(); // Toista uusi musiikki
     }
 }
-
-
-
-let spawnEnemyToggle = true; // T�m� pit�� kirjaa siit�, pit��k� spawnata vihollinen vai ei
-
 
 if (spawnEnemyToggle) {
     let mainInterval = setInterval(() => {
@@ -561,8 +546,5 @@ if (spawnEnemyToggle) {
 
     }, 2000); // Tasop�ivitys 2 sekunnin v�lein
 }
-
-
-
 
 drawBall();
