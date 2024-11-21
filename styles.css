@@ -34,8 +34,8 @@ canvas {
     align-items: center;
     justify-content: space-between;
     width: 100%;
-    max-width: 300px; /* Rajoittaa pistealueen leveyttä */
-    margin-top: -5vh; /* Säädä tätä tarpeen mukaan */
+    max-width: 300px; /* Rajoittaa pistealueen leveyttï¿½ */
+    margin-top: -5vh; /* Sï¿½ï¿½dï¿½ tï¿½tï¿½ tarpeen mukaan */
     max-width: 500px;
 }
 
@@ -47,27 +47,43 @@ canvas {
 
 #pisteet h1 {
     margin: 0;
-    font-size: 1.5em; /* Säädä fonttikokoa tarvittaessa */
+    font-size: 1.5em; /* Sï¿½ï¿½dï¿½ fonttikokoa tarvittaessa */
 }
 
 #pisteet img {
     width: 40px;
-    position: fixed; /* Jotta kuva keskittyy koko näytön mukaan */
-    top: 6vh; /* Kuvan pystysuuntainen sijainti, voit säätää */
+    position: fixed; /* Jotta kuva keskittyy koko nï¿½ytï¿½n mukaan */
+    top: 6vh; /* Kuvan pystysuuntainen sijainti, voit sï¿½ï¿½tï¿½ï¿½ */
     left: 50%; /* Keskitys vaakasuunnassa */
     transform: translateX(-50%); /* Tarkka vaakakeskitys */
     border: 3px dotted red;
 
 }
 
-
 #highScore {
     float: right;
     text-align: right;
 }
 
-
-
 #score {
     text-align: left;
+}
+
+#container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#ristit { 
+    display: flex; 
+    flex-direction: column; 
+    gap: 41px; 
+}
+
+#ristit_1 { 
+    display: flex; 
+    flex-direction: column; 
+    gap: 41px; 
+    float: right;
 }
