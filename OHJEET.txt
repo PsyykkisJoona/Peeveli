@@ -1,0 +1,20 @@
+OHJAUS JA MEKAANIIKAT:
+Nuolinäppäimet liikuttavat tähtäintä
+
+'Enter' ampuu pyhän laserin sekä 'Enteriä' painatessa
+kirkossa, antaa pelaajalle lisää panoksia. Voit saada
+panoksia nopeammin jos painat 'Enteriä' pohjaan!
+
+
+VIHOLLISTEN PISTEYTYS:
+lähimpänä -> 5
+keskellä -> 10
+kaukana -> 15
+Eli mitä kauempana vihollinen on sitä isompi pistemäärä
+
+Ja sitten jos tappaa enemmän kun yhden samaan aikaan,
+pisteet tuplataan:
+kaksi samaan aikaan -> *3
+kolme samaan aikaan -> *4
+neljä (tai enemmän) samaan aikaan -> *5
+
