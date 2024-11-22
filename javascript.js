@@ -3,6 +3,22 @@ const ctx = canvas.getContext("2d");
 const talo = document.getElementById("talo");
 const voima = document.getElementById("voima");
 const kuvake = document.getElementById("kuvake");
+
+const risti_1 = document.getElementById("risti_1");
+const risti_2 = document.getElementById("risti_2");
+const risti_3 = document.getElementById("risti_3");
+const risti_4 = document.getElementById("risti_4");
+const risti_5 = document.getElementById("risti_5");
+const risti_6 = document.getElementById("risti_6");
+const risti_7 = document.getElementById("risti_7");
+const risti_8 = document.getElementById("risti_8");
+const risti_9 = document.getElementById("risti_9");
+const risti_10 = document.getElementById("risti_10");
+
+const harmaa = "kuvat/risti.png";
+const kultainen = "kuvat/risti1.png"; 
+const sininen = "kuvat/risti2.png";
+
 const radius = 10;
 const centerX = canvas.width / 2;
 const centerY = canvas.height / 2;
@@ -170,6 +186,17 @@ function resetGame() {
         enemies = [];
         enterPressCount = 0;
         spawnEnemyToggle = true;
+
+        risti_1.src = harmaa;
+        risti_2.src = harmaa;
+        risti_3.src = harmaa;
+        risti_4.src = harmaa;
+        risti_5.src = harmaa;
+        risti_6.src = harmaa;
+        risti_7.src = harmaa;
+        risti_8.src = harmaa;
+        risti_9.src = harmaa;
+        risti_10.src = harmaa;
 
         drawBall();
         updateLevelMusic(level);
@@ -462,6 +489,9 @@ if (spawnEnemyToggle) {
                 enemyMoveInterval = 400;
             }
         } else if (stage === 2) {
+            
+            risti_1.src = kultainen;
+
             if (level >= 1 && level < 10) {
                 enemyMoveInterval = 1200;
             } else if (level >= 10 && level < 20) {
@@ -474,6 +504,9 @@ if (spawnEnemyToggle) {
                 enemyMoveInterval = 399;
             }
         } else if (stage === 3) {
+
+            risti_6.src = kultainen;
+
             if (level >= 1 && level < 10) {
                 enemyMoveInterval = 1170;
             } else if (level >= 10 && level < 20) {
@@ -486,6 +519,9 @@ if (spawnEnemyToggle) {
                 enemyMoveInterval = 396;
             }
         } else if (stage === 4) {
+
+            risti_2.src = kultainen;
+
             if (level >= 1 && level < 10) {
                 enemyMoveInterval = 1140;
             } else if (level >= 10 && level < 20) {
@@ -498,7 +534,11 @@ if (spawnEnemyToggle) {
                 enemyMoveInterval = 390;
             }
         } else if (stage === 5) {
+
+            risti_7.src = kultainen;
+
             canvas.style.backgroundColor = "#006400";
+
             if (level >= 1 && level < 10) {
                 enemyMoveInterval = 1100;
             } else if (level >= 10 && level < 20) {
@@ -511,8 +551,93 @@ if (spawnEnemyToggle) {
                 enemyMoveInterval = 388;
             }
         } else if (stage === 6) {
+
+            risti_3.src = kultainen;
+
+
             if (level >= 1 && level < 10) {
                 enemyMoveInterval = 1100;
+            } else if (level >= 10 && level < 20) {
+                enemyMoveInterval = 750;
+            } else if (level >= 20 && level < 30) {
+                enemyMoveInterval = 637;
+            } else if (level >= 30 && level < 40) {
+                enemyMoveInterval = 430;
+            } else if (level >= 40 && level < 55) {
+                enemyMoveInterval = 388;
+            }
+        } else if (stage === 7) {
+
+            risti_8.src = kultainen;
+
+
+            if (level >= 1 && level < 10) {
+                enemyMoveInterval = 1000;
+            } else if (level >= 10 && level < 20) {
+                enemyMoveInterval = 750;
+            } else if (level >= 20 && level < 30) {
+                enemyMoveInterval = 637;
+            } else if (level >= 30 && level < 40) {
+                enemyMoveInterval = 430;
+            } else if (level >= 40 && level < 55) {
+                enemyMoveInterval = 388;
+            }
+        } else if (stage === 8) {
+
+            risti_4.src = kultainen;
+
+
+            if (level >= 1 && level < 10) {
+                enemyMoveInterval = 1000;
+            } else if (level >= 10 && level < 20) {
+                enemyMoveInterval = 750;
+            } else if (level >= 20 && level < 30) {
+                enemyMoveInterval = 637;
+            } else if (level >= 30 && level < 40) {
+                enemyMoveInterval = 430;
+            } else if (level >= 40 && level < 55) {
+                enemyMoveInterval = 388;
+            }
+        } else if (stage === 9) {
+
+            risti_9.src = kultainen;
+
+
+            if (level >= 1 && level < 10) {
+                enemyMoveInterval = 1000;
+            } else if (level >= 10 && level < 20) {
+                enemyMoveInterval = 750;
+            } else if (level >= 20 && level < 30) {
+                enemyMoveInterval = 637;
+            } else if (level >= 30 && level < 40) {
+                enemyMoveInterval = 430;
+            } else if (level >= 40 && level < 55) {
+                enemyMoveInterval = 388;
+            }
+        } else if (stage === 10) {
+
+            risti_5.src = kultainen;
+
+            canvas.style.backgroundColor = "#A020F0";
+
+            if (level >= 1 && level < 10) {
+                enemyMoveInterval = 1000;
+            } else if (level >= 10 && level < 20) {
+                enemyMoveInterval = 750;
+            } else if (level >= 20 && level < 30) {
+                enemyMoveInterval = 637;
+            } else if (level >= 30 && level < 40) {
+                enemyMoveInterval = 430;
+            } else if (level >= 40 && level < 55) {
+                enemyMoveInterval = 388;
+            }
+        } else if (stage === 11) {
+
+            risti_10.src = kultainen;
+
+
+            if (level >= 1 && level < 10) {
+                enemyMoveInterval = 200;
             } else if (level >= 10 && level < 20) {
                 enemyMoveInterval = 750;
             } else if (level >= 20 && level < 30) {
