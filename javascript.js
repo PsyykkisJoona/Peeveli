@@ -33,6 +33,8 @@ var voimaa = new Audio('aanet/voimaa.mp3');
 var marssi = new Audio('aanet/marssi.mp3');
 var victorySound = new Audio('aanet/voitto.mp3');
 var loserSound = new Audio('aanet/loppu.mp3');
+var risti = new Audio('aanet/risti.mp3');
+
 
 let isShooting = false;
 let canShoot = true;
@@ -168,9 +170,6 @@ function endGame() {
         }
         updateScoreDisplay();
     }, 3000);
-
-
-
 }
 
 function resetGame() {
@@ -287,7 +286,7 @@ function createExplosion(explosionX, explosionY) {
                 const explosionDistance = Math.hypot(explosionX - enemy.x, explosionY - enemy.y);
 
                 if (explosionDistance < explosionRadius) {
-                    // Lasketaan keskiet�isyys vain tuhoutuville vihollisille ja lis�t��n listaan
+                    // Lasketaan keskietäisyys vain tuhoutuville vihollisille ja lis�t��n listaan
                     const centerDistance = Math.hypot(centerX - enemy.x, centerY - enemy.y);
                     enemiesDestroyed.push(centerDistance);
                     return false; // Poistetaan vihollinen, jos se tuhoutuu
@@ -417,7 +416,7 @@ function updateLevelMusic(level) {
     }
 
     // P�ivit� musiikki vain, jos l�hde on eri kuin nykyinen
-    if (newMusicSrc !== currentMusicSrc) {
+    if (newMusicSrc !== currentMusicSrc && !gameOver) {
         backgroundMusic.src = newMusicSrc;
         currentMusicSrc = newMusicSrc; // P�ivit� nykyinen l�hde
         backgroundMusic.play(); // Toista uusi musiikki
@@ -428,12 +427,10 @@ if (spawnEnemyToggle) {
     let mainInterval = setInterval(() => {
         // Jos saavutaan tasolle 50
         if (level >= 55 && !gameOver && !gameWon) {
-            // Est� pelaajan ohjaus ja p�ivit� voitto-tila
+            // Voitto-tilan käsittely
             level = 0;
-
             kuvake.src = isOriginalImage ? "kuvat/kuvake_3.png" : "kuvat/kuvake_4.png";
             document.querySelector("#pisteet img").style.border = "3px dotted white";
-
             gameWon = true;
             backgroundMusic.pause();
             clearInterval(enemyMoveTimer);
@@ -459,10 +456,30 @@ if (spawnEnemyToggle) {
                 Varvara.play();
             }, 2500);
 
+            // Animaatio ristin välkkyessä ennen vihollisten ilmestymistä
+            const ristiElement = document.getElementById(`risti_${stage}`);
+            if (ristiElement) {
+                setTimeout(() => {
+                    let blinkStartTime = Date.now();
+                    let blinkDuration = 2000; // 2 sekunnin animaatio
+                    let blinkInterval = setInterval(() => {
+                        risti.play()
+                        let elapsed = Date.now() - blinkStartTime;
+                        if (elapsed >= blinkDuration) {
+                            clearInterval(blinkInterval);
+                            ristiElement.src = kultainen; // Palauta kultainen
+                        } else {
+                            ristiElement.src = elapsed % 100 < 50 ? sininen : kultainen;
+                        }
+                    }, 50); // Aggressiivinen välkkyminen 50 ms välein
+                }, 15000); // Odotetaan 15 sekuntia ennen animaation alkamista
+            }
+
+
             setTimeout(() => {
                 Varvara.pause();
                 clearInterval(blinkInterval);
-                clearInterval(iconChangeInterval); // Pys�ytet��n kuvakkeiden vaihto
+                clearInterval(iconChangeInterval); // Pysäytetään kuvakkeiden vaihto
                 canvas.style.borderColor = "white";
                 spawnEnemyToggle = true;
                 canShoot = true;
@@ -471,6 +488,8 @@ if (spawnEnemyToggle) {
             }, 17200);
             return;
         }
+
+
 
         // P�ivitet��n taustamusiikki tason mukaan
         updateLevelMusic(level);
@@ -489,9 +508,6 @@ if (spawnEnemyToggle) {
                 enemyMoveInterval = 400;
             }
         } else if (stage === 2) {
-            
-            risti_1.src = kultainen;
-
             if (level >= 1 && level < 10) {
                 enemyMoveInterval = 1200;
             } else if (level >= 10 && level < 20) {
@@ -504,9 +520,6 @@ if (spawnEnemyToggle) {
                 enemyMoveInterval = 399;
             }
         } else if (stage === 3) {
-
-            risti_6.src = kultainen;
-
             if (level >= 1 && level < 10) {
                 enemyMoveInterval = 1170;
             } else if (level >= 10 && level < 20) {
@@ -519,9 +532,6 @@ if (spawnEnemyToggle) {
                 enemyMoveInterval = 396;
             }
         } else if (stage === 4) {
-
-            risti_2.src = kultainen;
-
             if (level >= 1 && level < 10) {
                 enemyMoveInterval = 1140;
             } else if (level >= 10 && level < 20) {
@@ -534,9 +544,6 @@ if (spawnEnemyToggle) {
                 enemyMoveInterval = 390;
             }
         } else if (stage === 5) {
-
-            risti_7.src = kultainen;
-
             canvas.style.backgroundColor = "#006400";
 
             if (level >= 1 && level < 10) {
@@ -552,9 +559,6 @@ if (spawnEnemyToggle) {
             }
         } else if (stage === 6) {
 
-            risti_3.src = kultainen;
-
-
             if (level >= 1 && level < 10) {
                 enemyMoveInterval = 1100;
             } else if (level >= 10 && level < 20) {
@@ -567,10 +571,6 @@ if (spawnEnemyToggle) {
                 enemyMoveInterval = 388;
             }
         } else if (stage === 7) {
-
-            risti_8.src = kultainen;
-
-
             if (level >= 1 && level < 10) {
                 enemyMoveInterval = 1000;
             } else if (level >= 10 && level < 20) {
@@ -583,9 +583,6 @@ if (spawnEnemyToggle) {
                 enemyMoveInterval = 388;
             }
         } else if (stage === 8) {
-
-            risti_4.src = kultainen;
-
 
             if (level >= 1 && level < 10) {
                 enemyMoveInterval = 1000;
@@ -600,9 +597,6 @@ if (spawnEnemyToggle) {
             }
         } else if (stage === 9) {
 
-            risti_9.src = kultainen;
-
-
             if (level >= 1 && level < 10) {
                 enemyMoveInterval = 1000;
             } else if (level >= 10 && level < 20) {
@@ -615,9 +609,6 @@ if (spawnEnemyToggle) {
                 enemyMoveInterval = 388;
             }
         } else if (stage === 10) {
-
-            risti_5.src = kultainen;
-
             canvas.style.backgroundColor = "#A020F0";
 
             if (level >= 1 && level < 10) {
@@ -632,10 +623,6 @@ if (spawnEnemyToggle) {
                 enemyMoveInterval = 388;
             }
         } else if (stage === 11) {
-
-            risti_10.src = kultainen;
-
-
             if (level >= 1 && level < 10) {
                 enemyMoveInterval = 200;
             } else if (level >= 10 && level < 20) {
